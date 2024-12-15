@@ -13,7 +13,6 @@ function Left() {
   const router = useRouter()
 
   const temp = useSelector((state) => state.city.temp);
-  const reduxCity = useSelector((state) => state.city.value);
   const render = useSelector((state) => state.render.value.isUpdated);
   const user = useSelector((state) => state.user.value);
 
@@ -40,7 +39,7 @@ function Left() {
           }
         });
     }
-  }, [user.token, render, reduxCity]);
+  }, [user.token, render]);
 
   const handleSearch = () => {
     if (user.token) {
@@ -60,7 +59,10 @@ function Left() {
             console.log("ERROR");
           }
         });
+    } else{
+      setIsModalOpen(true)
     }
+
     setCity("");
   }
 
@@ -75,6 +77,7 @@ function Left() {
   const villeCel = cityData?.map((e, i) => {
     return <Card key={i} {...e} temp={temp} />;
   });
+  
 
   const celsiusToFahrenheit = (celsius) => (celsius * 9) / 5 + 32;
 
@@ -87,7 +90,7 @@ function Left() {
 
   return (
 
-    <div className="w-1/5 bg-[#001429] overflow-y-auto overflow-auto justify-center flex-wrap">
+    <div className="w-1/5 bg-[#000A14] overflow-y-auto overflow-auto justify-center flex-wrap">
 
       <div className="flex flex-col items-center justify-center pt-5 gap-5">
 
@@ -119,7 +122,9 @@ function Left() {
       </div>
 
       <div className="flex flex-col flex-wrap py-5 gap-5 justify-center items-center">
-        {temp ? villeCel : villeFar}
+      
+      {user.token ? (temp ? villeCel : villeFar) : <></>}
+
       </div>
       
     </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Daily from './Daily';
+import { Modal } from 'antd';
 import { changeCity } from '../reducers/city';
 
 
@@ -13,7 +14,18 @@ function Right(props) {
     const temp = useSelector((state) => state.city.temp);
     const dispatch = useDispatch()
 
+      const [isModalOpen, setIsModalOpen] = useState(false);
+    
+      const handleOk = () => {
+        setIsModalOpen(false);
+      };
+    
+      const handleCancel = () => {
+        setIsModalOpen(false);
+      };
+
     const date = new Date
+    
 
     let kmH = city?.wind * 3.6
 
@@ -32,10 +44,10 @@ function Right(props) {
         fetch(`http://localhost:3000/weather/gets/${reduxCity}`)
         .then((response) => response.json())
         .then((cityData) => {
-            if(cityData.main){
+            if(cityData.weather){
                 setDays(filteredData(cityData.weather))
             } else {
-                // rajouter message erreur cote utilisateur
+                setIsModalOpen(true)
                 dispatch(changeCity("Paris"))
             }
 
@@ -80,8 +92,6 @@ function Right(props) {
     const listC = fiveDays?.map((day, i) => {
       return <Daily {...day} key={i} />
     })
-
-    console.log(city)
 
     const celsiusToFahrenheit = (celsius) => (celsius * 9) / 5 + 32;
 
@@ -198,14 +208,24 @@ function Right(props) {
       }
 
     return (
-        <div className='border text-stone-50 flex flex-col justify-around w-4/5'
+        <div className='border border-black text-stone-50 flex flex-col justify-around w-4/5'
         style={{
             backgroundImage: `url(${bground})`,
-            backgroundSize: "cover", // L'image remplit la div sans distorsion
-            backgroundPosition: "center", // Centre l'image
-            backgroundRepeat: "no-repeat" // Empêche la répétition
+            backgroundSize: "cover", 
+            backgroundPosition: "center", 
+            backgroundRepeat: "no-repeat" 
           }} >
         
+        <Modal 
+          open={isModalOpen} 
+          onOk={handleOk} 
+          onCancel={handleCancel}
+          footer={null}
+          closeIcon={null}
+          maskClosable={true}>
+          <p className="text-center font-serif text-xl text-red-700">No City found</p>
+        </Modal>
+
                 <div className='flex flex-row justify-between px-5 py-2'>
                     <div className='pl-10 '>
                         <h1 className='text-4xl font-serif text-stroke-black text-stroke-lg font-bold '>{reduxCity[0].toUpperCase()}{reduxCity.slice(1)}</h1>

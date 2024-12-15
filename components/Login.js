@@ -87,14 +87,14 @@ function Login() {
   return (
     <div className="h-screen">
       <Navbar />
-      <div className="bg-gray-100 flex justify-center items-center h-5/6">
+      <div className="bg-[#000A14] flex justify-center items-center h-5/6">
         <div className="lg:p-36 md:p-52 sm:20  w-full h-full lg:w-1/2">
-          <h1 className="text-2xl font-semibold text-center font-serif mb-4">
+          <h1 className="text-2xl font-semibold text-stone-100 text-center font-serif mb-4">
             {signState}
           </h1>
 
           <div className="mb-4">
-            <label for="email" className="block text-gray-600">
+            <label for="email" className="block text-stone-100">
               Email
             </label>
             <input
@@ -114,7 +114,7 @@ function Login() {
           </div>
 
           <div className="mb-4">
-            <label for="password" className="block text-gray-600">
+            <label for="password" className="block text-stone-100">
               Password
             </label>
 
@@ -138,7 +138,7 @@ function Login() {
             }}
             className={clsx(
               buttonPressed
-                ? "bg-[#010203] text-[#bfdbf7]"
+                ? "bg-blue-500 text-[#bfdbf7]"
                 : "bg-[#bfdbf7] text-[#010203]",
               " font-semibold rounded-md py-2 px-4 w-full"
             )}
@@ -149,7 +149,7 @@ function Login() {
           <div className="mt-6 text-blue-500 text-center">
             <div>
               {signState === "Sign In" ? (
-                <p className="text-[#010203]">
+                <p className="text-stone-100">
                   New member?{" "}
                   <button
                     className="hover:underline text-blue-600"
@@ -162,7 +162,7 @@ function Login() {
                 </p>
               ) : (
                 <p>
-                  <span className="text-slate-950">
+                  <span className="text-stone-100">
                     Already have an account ?{" "}
                   </span>
                   <button
@@ -178,7 +178,7 @@ function Login() {
             </div>
           </div>
         </div>
-        <div className="w-1/2 h-full hidden lg:block bg-cover">
+        <div className="w-2/3 h-full hidden lg:block bg-cover">
           <img className=" w-full h-full object-cover object-center" src="logsky.jpg" />
         </div>
       </div>

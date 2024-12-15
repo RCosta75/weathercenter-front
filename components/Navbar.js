@@ -38,13 +38,13 @@ function Navbar() {
   }
 
   const Logout = (
-    <span className="cursor-pointer text-2xl font-bold text-stone-100 font-serif" onClick={() => handleLogout()}>
+    <span className="cursor-pointer text-xl font-bold text-stone-100 font-serif" onClick={() => handleLogout()}>
             Logout
           </span>
   )
 
   const Login = (
-    <span className="cursor-pointer text-2xl font-bold text-stone-100 font-serif" onClick={() => handleLogin()}>
+    <span className="cursor-pointer text-xl font-bold text-stone-100 font-serif" onClick={() => handleLogin()}>
             Login
           </span>
   )
@@ -56,9 +56,9 @@ function Navbar() {
   };
 
   return (
-    <div className="h-1/6 flex items-center border-b border-stone-100  bg-[#001429] justify-around">
+    <div className="h-1/6 flex items-center border-b-4 border-black  bg-[#000A14] justify-around">
       <div>
-        <span className="cursor-pointer text-stone-100 text-2xl font-bold font-serif" onClick={() => handleHome()}>
+        <span className="cursor-pointer text-stone-100 text-3xl font-bold font-serif" onClick={() => handleHome()}>
           Weather Center
         </span>
       </div>
