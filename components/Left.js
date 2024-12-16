@@ -31,7 +31,7 @@ function Left() {
   // Route pour actualiser les temperatures
   useEffect(() => {
     if (user.token) {
-      fetch(`http://localhost:3000/users/cities/${user.token}`)
+      fetch(`https://weatherapp-back-red.vercel.app/users/cities/${user.token}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.cities) {
@@ -43,7 +43,7 @@ function Left() {
 
   const handleSearch = () => {
     if (user.token) {
-      fetch(`http://localhost:3000/weather/newpost`, {
+      fetch(`https://weatherapp-back-red.vercel.app/weather/newpost`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

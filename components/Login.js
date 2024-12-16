@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import clsx from "clsx";
 import Navbar from "./Navbar";
@@ -10,7 +10,7 @@ import { connect } from "../reducers/user";
 
 function Login() {
 
-  const user = useSelector((state) => state.user.value);
+
   const [email, setemail] = useState("");
   const [emailError, setEmailError] = useState(true);
   const [password, setPassword] = useState("");
@@ -40,7 +40,7 @@ function Login() {
 
   const handleSignUp = () => {
     if (EMAIL_REGEX.test(email)) {
-      fetch("http://localhost:3000/users/signup", {
+      fetch("https://weatherapp-back-red.vercel.app/users/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -59,7 +59,7 @@ function Login() {
   };
 
   const handleSignIn = () => {
-    fetch("http://localhost:3000/users/signin", {
+    fetch("https://weatherapp-back-red.vercel.app/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

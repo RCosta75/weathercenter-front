@@ -30,7 +30,7 @@ function Right(props) {
     let kmH = city?.wind * 3.6
 
     useEffect(() => {
-        fetch(`http://localhost:3000/weather/getOne/${reduxCity}`)
+        fetch(`https://weatherapp-back-red.vercel.app/weather/getOne/${reduxCity}`)
         .then((response) => response.json())
         .then((cityData) => {
             if(cityData){
@@ -41,7 +41,7 @@ function Right(props) {
     }, [reduxCity]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/weather/gets/${reduxCity}`)
+        fetch(`https://weatherapp-back-red.vercel.app/weather/gets/${reduxCity}`)
         .then((response) => response.json())
         .then((cityData) => {
             if(cityData.weather){
