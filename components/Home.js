@@ -1,7 +1,8 @@
 import React from "react"; 
 import Navbar from "./Navbar"
-import Right from './Right';
+import Middle from './Middle';
 import Left from './Left';
+import Right from "./Right";
 
 function Home() {
 
@@ -11,6 +12,7 @@ function Home() {
       <Navbar/>
       <div className="h-5/6 flex flex-row">
       <Left/>
+      <Middle/>
       <Right/>
       </div>
     </div>

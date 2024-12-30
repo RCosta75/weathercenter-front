@@ -60,7 +60,7 @@ function Card(props) {
 
   // route pour supprimer une ville de user.cities[]
   const handleDelete = (city) => {
-    fetch("https://weatherapp-back-red.vercel.app/weather/disupdate", {
+    fetch("http://localhost:3000/weather/disupdate", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

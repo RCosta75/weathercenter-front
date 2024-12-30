@@ -40,7 +40,7 @@ function Login() {
 
   const handleSignUp = () => {
     if (EMAIL_REGEX.test(email)) {
-      fetch("https://weatherapp-back-red.vercel.app/users/signup", {
+      fetch("http://localhost:3000/users/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -59,7 +59,7 @@ function Login() {
   };
 
   const handleSignIn = () => {
-    fetch("https://weatherapp-back-red.vercel.app/users/signin", {
+    fetch("http://localhost:3000/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -88,7 +88,7 @@ function Login() {
     <div className="h-screen">
       <Navbar />
       <div className="bg-[#000A14] flex justify-center items-center h-5/6">
-        <div className="lg:p-36 md:p-52 sm:20  w-full h-full lg:w-1/2">
+        <div className="lg:p-36 md:p-52 sm:20  w-full h-full lg:w-1/2 border-r-2 border-stone-200">
           <h1 className="text-2xl font-semibold text-stone-100 text-center font-serif mb-4">
             {signState}
           </h1>

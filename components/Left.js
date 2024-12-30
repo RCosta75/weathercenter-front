@@ -31,7 +31,7 @@ function Left() {
   // Route pour actualiser les temperatures
   useEffect(() => {
     if (user.token) {
-      fetch(`https://weatherapp-back-red.vercel.app/users/cities/${user.token}`)
+      fetch(`http://localhost:3000/users/cities/${user.token}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.cities) {
@@ -43,7 +43,7 @@ function Left() {
 
   const handleSearch = () => {
     if (user.token) {
-      fetch(`https://weatherapp-back-red.vercel.app/weather/newpost`, {
+      fetch(`http://localhost:3000/weather/newpost`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -90,9 +90,9 @@ function Left() {
 
   return (
 
-    <div className="w-1/5 bg-[#000A14] overflow-y-auto overflow-auto justify-center flex-wrap">
+    <div className="w-1/5 bg-[#000A14] border-r-2 h-full flex-col flex border-stone-200 justify-center ">
 
-      <div className="flex flex-col items-center justify-center pt-5 gap-5">
+      <div className="flex flex-col items-center justify-center py-5 gap-5">
 
         <h1 className="text-stone-100 font-serif text-3xl font-bold text-center">Save a City</h1>
 
@@ -116,12 +116,12 @@ function Left() {
           footer={null}
           closeIcon={null}
           maskClosable={true}>
-          <p onClick={() => router.push('/log')} className="hover:underline cursor-pointer text-center font-serif text-xl text-red-700">Please Login To Save a City</p>
+          <p onClick={() => router.push('/log')} className=" text-center font-serif text-xl text-red-700">Please <span className="cursor-pointer underline">Login</span> To Save a City</p>
         </Modal>
 
       </div>
 
-      <div className="flex flex-col flex-wrap py-5 gap-5 justify-center items-center">
+      <div className="flex flex-1 gap-4 overflow-y-auto no-scrollbar flex-col items-center">
       
       {user.token ? (temp ? villeCel : villeFar) : <></>}
 

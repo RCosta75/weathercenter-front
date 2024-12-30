@@ -56,7 +56,7 @@ function Navbar() {
   };
 
   return (
-    <div className="h-1/6 flex items-center border-b-4 border-black  bg-[#000A14] justify-around">
+    <div className="h-1/6 flex items-center border-b-2 border-stone-200  bg-[#000A14] justify-around">
       <div>
         <span className="cursor-pointer text-stone-100 text-3xl font-bold font-serif" onClick={() => handleHome()}>
           Weather Center
