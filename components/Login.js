@@ -3,22 +3,18 @@ import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import clsx from "clsx";
 import Navbar from "./Navbar";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { connect } from "../reducers/user";
 
-
-
 function Login() {
-
-
   const [email, setemail] = useState("");
   const [emailError, setEmailError] = useState(true);
   const [password, setPassword] = useState("");
   const [signState, setsignState] = useState("Sign In"); //Pour modifier les titres selon l'inscription/connexion
   const [buttonPressed, setButtonPressed] = useState(false);
 
-  const dispatch = useDispatch()
-  const router = useRouter()
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -40,7 +36,7 @@ function Login() {
 
   const handleSignUp = () => {
     if (EMAIL_REGEX.test(email)) {
-      fetch("http://localhost:3000/users/signup", {
+      fetch("https://weatherapp-back-red.vercel.app/users/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -49,7 +45,7 @@ function Login() {
         .then((data) => {
           if (data) {
             dispatch(connect({ token: data.data.token, email }));
-            router.push("/")
+            router.push("/");
           }
         });
     } else {
@@ -59,7 +55,7 @@ function Login() {
   };
 
   const handleSignIn = () => {
-    fetch("http://localhost:3000/users/signin", {
+    fetch("https://weatherapp-back-red.vercel.app/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -74,7 +70,7 @@ function Login() {
             })
           );
           toast.success(`Welcome Back ${data.email}`);
-          router.push("/")
+          router.push("/");
         } else {
           setEmailError(false);
           toast.error(`Error try again`);
@@ -82,7 +78,8 @@ function Login() {
       });
   };
 
-  const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const EMAIL_REGEX =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   return (
     <div className="h-screen">
@@ -179,11 +176,14 @@ function Login() {
           </div>
         </div>
         <div className="w-2/3 h-full hidden lg:block bg-cover">
-          <img className=" w-full h-full object-cover object-center" src="logsky.jpg" />
+          <img
+            className=" w-full h-full object-cover object-center"
+            src="logsky.jpg"
+          />
         </div>
       </div>
     </div>
   );
 }
 
-export default Login
+export default Login;
